@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <>
-<footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
+<footer className="footer sm:footer-horizontal bg-base-300 text-neutral-content p-10">
   <aside>
     <span className='text-3xl'>🍇</span>
     <p className='text-neutral-300 font-light '>
