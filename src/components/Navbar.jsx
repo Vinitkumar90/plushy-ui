@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const userState = useSelector((state) => state.user);
+  const userState = useSelector((store) => store.user);
   return (
     <>
       <div className="navbar bg-base-300 shadow-sm">
@@ -14,7 +14,7 @@ const Navbar = () => {
         </div>
         {userState && (
           <div className="flex gap-2 items-center">
-            <p>Welcome, {userState.firstName}</p>
+            <p className="font-thin italic text-neutral-200">Welcome, {userState.firstName}</p>
             <div className="dropdown dropdown-end mr-8 flex gap-2 items-center">
               <div
                 tabIndex={0}

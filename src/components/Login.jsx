@@ -22,7 +22,7 @@ const Login = () => {
         },
         {
           withCredentials: true,
-        }
+        } //allow to set cookies for cross domain
       );
       dispatch(addUser(res.data.user))
       navigate("/feed")
