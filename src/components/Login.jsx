@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constant";
 import { useNavigate } from "react-router";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // never call a hook inside a function
+  const user = useSelector((store) => store.user);
 
   const [emailId, setEmail] = useState("vinitkumar@modi.com");
   const [password, setPassword] = useState("Vinitkumar@123");
 
+  
+  useEffect(() => {
+    if (user) {
+      navigate("/feed");
+    }
+  }, []);
+
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        BASE_URL+"/login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
@@ -24,10 +32,10 @@ const Login = () => {
           withCredentials: true,
         } //allow to set cookies for cross domain
       );
-      dispatch(addUser(res.data.user))
-      navigate("/feed")
+      dispatch(addUser(res.data.user));
+      navigate("/feed");
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message);
     }
   };
 

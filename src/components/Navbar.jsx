@@ -1,8 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { removeUser } from "../utils/userSlice";
+import { useNavigate } from "react-router";
 
 const Navbar = () => {
   const userState = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(removeUser());
+    navigate("/");
+  };
   return (
     <>
       <div className="navbar bg-base-300 shadow-sm">
@@ -14,7 +23,9 @@ const Navbar = () => {
         </div>
         {userState && (
           <div className="flex gap-2 items-center">
-            <p className="font-thin italic text-neutral-200">Welcome, {userState.firstName}</p>
+            <p className="font-thin italic text-neutral-200">
+              Welcome, {userState.firstName}
+            </p>
             <div className="dropdown dropdown-end mr-8 flex gap-2 items-center">
               <div
                 tabIndex={0}
@@ -43,7 +54,7 @@ const Navbar = () => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>
             </div>
