@@ -79,7 +79,7 @@ const Login = () => {
           <div className="text-center">
             <p className="text-red-500 font-semibold text-start">{err}</p>
             <button
-              className="btn btn-outline btn-primary mt-4"
+              className="btn btn-soft btn-primary"
               onClick={handleLogin}
             >
               Submit
