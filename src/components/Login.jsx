@@ -12,6 +12,7 @@ const Login = () => {
 
   const [emailId, setEmail] = useState("vinitkumar@modi.com");
   const [password, setPassword] = useState("Vinitkumar@123");
+  const[err, setErr] = useState("");
 
   
   useEffect(() => {
@@ -35,6 +36,9 @@ const Login = () => {
       dispatch(addUser(res.data.user));
       navigate("/feed");
     } catch (err) {
+      setErr(err.response.data.error || 
+        "Something went wrong"
+      )
       console.log(err.message);
     }
   };
@@ -73,6 +77,7 @@ const Login = () => {
             </fieldset>
           </div>
           <div className="text-center">
+            <p className="text-red-500 font-semibold text-start">{err}</p>
             <button
               className="btn btn-outline btn-primary mt-4"
               onClick={handleLogin}
