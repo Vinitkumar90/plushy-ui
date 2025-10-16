@@ -25,6 +25,7 @@ const Feed = () => {
 
 
   return(
+    // when my feed is loaded , then only show
    feed && (<div className="flex justify-center my-10 ">
       <UserCard user={feed[0]}/>
     </div>
