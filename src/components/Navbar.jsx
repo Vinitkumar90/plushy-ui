@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeUser } from "../utils/userSlice";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import { BASE_URL } from "../utils/constant";
 
@@ -23,10 +23,10 @@ const Navbar = () => {
     <>
       <div className="navbar bg-base-300 shadow-sm">
         <div className="flex-1">
-          <a className="btn btn-ghost text-2xl">
+          <Link to={"/feed"} className="btn btn-ghost text-2xl">
             <span className=" text-neutral-200 font-light italic">Plushy </span>
             🍇
-          </a>
+          </Link>
         </div>
         {userState && (
           <div className="flex gap-2 items-center">
@@ -52,13 +52,9 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-300 rounded-box z-1 mt-36 w-48 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to={"/profile"} className="justify-between">
                     Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
+                  </Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>
