@@ -123,9 +123,8 @@ const EditProfile = ({ user }) => {
                 className="textarea"
                 placeholder="About"
                 onChange={(e) => setAbout(e.target.value)}
-              >
-                {about}
-              </textarea>
+                value={about}
+              />
             </fieldset>
           </div>
           <p className="text-sm text-red-500 font-semibold">{error}</p>
