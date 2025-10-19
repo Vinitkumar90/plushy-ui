@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest } from "../utils/requestSlice";
@@ -7,6 +7,21 @@ import { addRequest } from "../utils/requestSlice";
 const Request = () => {
   const dispatch = useDispatch();
   const request = useSelector((store) => store.request);
+
+
+//   to accept or reject a connection reques
+  const reviewRequest = async(status,requestId) => {
+    console.log(status,requestId)
+    try{
+        const res = axios.post(BASE_URL+"/request/review/"+status +"/"+requestId, {}, {withCredentials:true})
+
+        const updatedRequest = request.filter((req) => req.fromUserId._id !== requestId);
+        dispatch(addRequest(updatedRequest));
+        
+    }catch(error){
+        console.error(error);
+    }
+  }
 
   const fetchRequest = async () => {
     try {
@@ -27,7 +42,7 @@ const Request = () => {
     <div className="w-full flex flex-col items-center">
         <h1 className="mt-3 text-2xl font-semibold">Connection Requests</h1>
       {request.map((request,i) => {
-        const { firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
+        const { _id,firstName, lastName, photoUrl, age, gender, about } = request.fromUserId;
         return (
           <div key={i} className="m-4 flex w-xl py-3 px-6 rounded bg-base-300 ">
             <img src={photoUrl} className="w-18 rounded-full" alt="photo" />
@@ -39,8 +54,8 @@ const Request = () => {
               {age && gender && <p>{age + ", " + gender}</p>}
             </div>
             <div className="flex items-center gap-2">
-                <button className="btn btn-primary">Reject</button>
-                <button className="btn btn-secondary">Accept</button>
+                <button className="btn btn-primary" onClick={() => reviewRequest("rejected",_id)}>Reject</button>
+                <button className="btn btn-secondary" onClick={() => reviewRequest("accepted",_id)}>Accept</button>
             </div>
           </div>
         );

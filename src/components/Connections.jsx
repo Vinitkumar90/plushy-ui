@@ -35,9 +35,12 @@ const Connections = () => {
                 <div key={i} className='m-4 flex  py-3 px-6 rounded bg-base-300 '>
                     <img src={connection.photoUrl} className='w-18 rounded-full' alt="photo" />
                     <div className=' py-2 px-4 flex flex-col gap-y-0.5 w-full'>
-                    <p className="font-bold">{connection.firstName} {connection.lastName}</p> 
-                    <p>{connection.about}</p>
-                   {connection.age && connection.gender && <p>{connection.age +", "+ connection.gender}</p>}
+                        <p className="font-bold">{connection.firstName} {connection.lastName}</p> 
+                        <p>{connection.about}</p>
+                            {connection.age && connection.gender && <p>{connection.age +", "+ connection.gender}</p>}
+                    </div>
+                    <div className='flex flex-row items-center'>
+                        <h2 className='bg-green-600  font-thin italic px-2 rounded '>Friends</h2>
                     </div>
                 </div>
             ))
