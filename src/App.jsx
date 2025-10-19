@@ -9,6 +9,7 @@ import Feed from "./components/Feed";
 import LandingPage from "./components/Landing";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Connections from "./components/Connections";
+import Request from "./components/Request";
 
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
                 }
               />
                <Route path="connections" element={<Connections/>} />
+               <Route path="request" element={<Request/>} />
             </Route>
           </Routes>
       </BrowserRouter>
