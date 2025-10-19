@@ -1,9 +1,9 @@
 import React from 'react'
 
-const UserCard = ({user}) => {
+const UserCard = ({user,show=true}) => {
     const{firstName, lastName, photoUrl, age, gender, about} = user;
   return (
-    <div className="card bg-base-300 w-96  shadow-md  h-fit">
+    <div className="card bg-base-300 w-96  shadow-md  h-fit pb-2">
   <figure>
     <img src={photoUrl} className='rounded w-full' alt='photo' />
   </figure>
@@ -12,10 +12,14 @@ const UserCard = ({user}) => {
     <p>{about}</p>
     {/* if agen and gender is present then only show */}
     {age && gender && <p>{age + ", " + gender}</p>}
-    <div className="card-actions justify-center gap-3  my-4">
-      <button className='btn btn-primary'>Ignore</button>
-      <button className='btn btn-secondary'>Interested</button>
-    </div>
+  {
+    show && (
+      <div className="card-actions justify-center gap-3  my-4">
+    <button className='btn btn-primary'>Ignore</button>
+    <button className='btn btn-secondary'>Interested</button>
+  </div>
+    )
+  }
   </div>
 </div>
   )

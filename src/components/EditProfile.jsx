@@ -134,7 +134,7 @@ const EditProfile = ({ user }) => {
         </div>
       </div>
       {/* sending state variable here for control */}
-      <UserCard user={{ firstName, lastName, photoUrl, age, about, gender }} />
+      <UserCard user={{ firstName, lastName, photoUrl, age, about, gender }} show={false} />
       {/* toast here daisy */}
       {showToast && (
         <div className="toast toast-top toast-center">
