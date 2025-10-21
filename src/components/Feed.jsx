@@ -23,6 +23,10 @@ const Feed = () => {
     getFeed();
   },[])
 
+  if(!feed) return;
+
+  if(feed.length <= 0) return <h1 className="text-center my-10 ">No new Users Found !</h1>;
+
 
   return(
     // when my feed is loaded , then only show
