@@ -22,9 +22,9 @@ const Connections = () => {
         fetchConnections()
     },[]);
 
-    if(!connections)return; //like loading until connections have arrived
+    if(!connections)return <h1 className='text-center my-3 '>Loading...</h1>; //like loading until connections have arrived
 
-    if(connections.length === 0) return <h1>No Connections Found</h1>
+    if(connections.length === 0) return <h1 className='text-center my-3'>No Connections Found</h1>
 
   return (
     <div className='flex flex-col items-center' >

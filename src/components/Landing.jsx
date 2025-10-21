@@ -15,7 +15,7 @@ const LandingPage = () => {
 
       <div className="space-x-4">
         <Link to="/login">
-          <button className="btn btn-outline btn-primary mt-4">
+          <button className="btn btn-primary mt-4">
             lets gooo
           </button>
         </Link>

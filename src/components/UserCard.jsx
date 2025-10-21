@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { removeUserFromFeed } from '../utils/feedSlice';
 
 
-const UserCard = ({user}) => {
+const UserCard = ({user,show=true}) => {
   const{_id,firstName, lastName, photoUrl, age, gender, about} = user;
   const dispatch = useDispatch();
 
@@ -33,8 +33,14 @@ const UserCard = ({user}) => {
   {
     
       <div className="card-actions justify-center gap-3  my-4">
+   { 
+    show && (
+    <>
     <button className='btn btn-primary' onClick={()=>handleSendRequest("ignored",_id)}>Ignore</button>
     <button className='btn btn-secondary' onClick={() => handleSendRequest("interested",_id)}>Interested</button>
+    </>
+    )
+    }
   </div>
     
   }
